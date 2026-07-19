@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Say That Again</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell" aria-labelledby="app-title">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Conversation challenge</p>
+          <h1 id="app-title">Say That Again</h1>
+        </div>
+        <button class="icon-button" id="reset-button" type="button" aria-label="Reset score" title="Reset score">
+          <span aria-hidden="true">&#8634;</span>
+        </button>
+      </header>
+
+      <section class="scoreboard" aria-label="Score">
+        <article class="score-tile score-total">
+          <span class="score-value" id="weighted-score">0</span>
+          <span class="score-label">Score</span>
+        </article>
+        <button class="score-tile score-action" id="history-button" type="button">
+          <span class="score-value">All</span>
+          <span class="score-label">History</span>
+        </button>
+        <button class="score-tile score-action" id="success-tile" type="button">
+          <span class="score-value" id="success-count">0</span>
+          <span class="score-label">Successes</span>
+        </button>
+        <button class="score-tile score-action" id="fail-tile" type="button">
+          <span class="score-value" id="fail-count">0</span>
+          <span class="score-label">Missed</span>
+        </button>
+        <button class="score-tile score-action" id="streak-tile" type="button">
+          <span class="score-value" id="streak-count">0</span>
+          <span class="score-label">Streak</span>
+        </button>
+      </section>
+
+      <section class="play-area" aria-live="polite">
+        <p class="status-pill" id="status-pill">Drag the card or use the buttons</p>
+
+        <div class="card-stage">
+          <article class="phrase-card" id="phrase-card" tabindex="0" aria-describedby="phrase-help">
+            <div class="swipe-badge badge-left" aria-hidden="true">Missed</div>
+            <div class="swipe-badge badge-right" aria-hidden="true">Nailed it</div>
+            <p class="card-kicker" id="phrase-number">Prompt 1</p>
+            <p class="reveal-hint" id="reveal-hint"></p>
+            <p class="phrase-text" id="phrase-text"></p>
+            <div class="card-footer">
+              <span class="difficulty" id="difficulty-label"></span>
+              <span class="category" id="category-label"></span>
+            </div>
+          </article>
+        </div>
+
+        <p class="sr-only" id="phrase-help">
+          Reveal the card, then swipe left or press the left button if you failed. Swipe right or press the right button if you succeeded.
+        </p>
+
+        <div class="actions" aria-label="Mark your attempt">
+          <button class="action-button fail" id="fail-button" type="button">
+            <span aria-hidden="true">&larr;</span>
+            Failed
+          </button>
+          <button class="action-button success" id="success-button" type="button">
+            Nailed it
+            <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <section class="history-panel" id="history-panel" aria-hidden="true">
+      <div class="history-backdrop" id="history-backdrop"></div>
+      <div class="history-dialog" role="dialog" aria-modal="true" aria-labelledby="history-title">
+        <header class="history-header">
+          <div>
+            <p class="eyebrow" id="history-kicker">History</p>
+            <h2 id="history-title">All Cards</h2>
+          </div>
+          <button class="icon-button" id="history-close" type="button" aria-label="Close history" title="Close history">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </header>
+        <div class="history-score">
+          <span class="score-value" id="history-score-value">0</span>
+          <span class="score-label">Difficulty score</span>
+        </div>
+        <div class="history-grid" id="history-grid"></div>
+      </div>
+    </section>
+
+    <script src="phrases.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
